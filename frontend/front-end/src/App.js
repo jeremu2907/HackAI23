@@ -1,5 +1,6 @@
 import './App.css';
 import Upload from "./components/UploadButton/Upload"
+import PostProcess from './pages/PostProcess';
 
 function App() {
   return (
@@ -11,9 +12,7 @@ function App() {
         <Upload/>
       </div>
 
-      <div>
-        
-      </div>
+      <PostProcess />
     </div>
   );
 }
