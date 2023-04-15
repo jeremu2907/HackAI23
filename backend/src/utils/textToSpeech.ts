@@ -33,6 +33,5 @@ export const getAllAudioUrls = async (text: string): Promise<Buffer> => {
         const buf = await res.body.arrayBuffer();
         result.push(buf);
     }
-    console.log(Buffer.concat(result));
     return Buffer.concat(result);
 };

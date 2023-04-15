@@ -1,4 +1,5 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, Res } from '@nestjs/common';
+import { Response } from 'express';
 import { AppService } from './app.service';
 
 @Controller()
@@ -11,7 +12,8 @@ export class AppController {
     }
 
     @Get('tts')
-    async getTTS(@Query('text') text: string): Promise<Buffer> {
-        return await this.appService.getTTS(text);
+    async getTTS(@Query('text') text: string, @Res() res: Response) {
+        res.set('Content-Type', 'audio/mpeg');
+        res.send(await this.appService.getTTS(text));
     }
 }
