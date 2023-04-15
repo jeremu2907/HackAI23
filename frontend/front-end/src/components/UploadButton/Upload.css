@@ -1,0 +1,26 @@
+input[type="file"] {
+    display: none;
+}
+
+#upload-wrapper {
+    width: 400px;
+    height: 75px;
+    padding: 0px;
+    border: 0;
+    border-top: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    /* border-radius: 30px; */
+    color: var(--accent);
+    font-size: 30px;
+    font-family: 'Red Hat Display', sans-serif;
+    background-color: rgba(0,0,0,0);
+    transition: backdrop-filter 0.3s, background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#upload-wrapper:hover{
+    backdrop-filter: blur(4px);
+    background-color: rgba(70,70,70,0.5);
+  }
