@@ -6,6 +6,7 @@ import PostProcess from './pages/PostProcess';
 import Loading from './components/Loading/Loading'
 
 function App() {
+   global.LATEST_TRANSLATED_LANG = undefined;
 
   return (
     <div className="App">

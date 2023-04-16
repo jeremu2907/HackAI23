@@ -6,7 +6,7 @@ const langDict = {
 }
 
 export default function Translate(){
-    const [lang, setlang] = useState("en");
+    const [lang, setlang] = useState();
     const [send, setsend] = useState(false);
     const langList = Object.keys(langDict);
 
@@ -49,16 +49,19 @@ export default function Translate(){
 
     const translateReq = (e) => {
         closePanel();
+        /* global LATEST_TRANSLATED_LANG */
         setlang(langDict[e]);
+        LATEST_TRANSLATED_LANG = langDict[e];
         console.log(lang)
         setsend(true);
     }
 
     useEffect(() => {
         console.log(lang)
-        if(send)
+        if(send && lang && lang !== 'en'){
+            console.log('sending requests');
             document.getElementById("loading").style.visibility = "visible";
-            fetch(`https://d1b0-47-186-243-93.ngrok-free.app/api/translate?summary=${window.localStorage.getItem('Summary')}&transcript=${encodeURI(window.localStorage.getItem('Transcript'))}&tolang=${lang}`, {
+            fetch(`https://37a6-47-186-243-93.ngrok-free.app/api/translate?summary=${window.localStorage.getItem('Summary')}&transcript=${encodeURI(window.localStorage.getItem('Transcript'))}&tolang=${lang}`, {
                 method: 'GET',
             })
             .then((res) => {
@@ -72,7 +75,8 @@ export default function Translate(){
                 window.localStorage.setItem(`Summary_${lang}`, response.summary);
                 setsend(false);
             })
-    },[lang,send])
+        }
+    },[send,lang])
     
     return(
         <div style={overlay} id="translatePanel">
