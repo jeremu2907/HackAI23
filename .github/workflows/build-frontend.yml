@@ -6,7 +6,7 @@ on:
       - 'main'
 
 jobs:
-  build-backend:
+  build-frontend:
     runs-on: ubuntu-latest
     steps:
       -
@@ -28,4 +28,4 @@ jobs:
         with:
           push: true
           file: backend/Dockerfile
-          tags: ghcr.io/jeremu2907/hackai23:backend
+          tags: ghcr.io/jeremu2907/hackai23:frontend
