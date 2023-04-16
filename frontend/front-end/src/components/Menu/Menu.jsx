@@ -68,22 +68,24 @@ export default function Menu(){
         // let blobSummary = new Blob([window.localStorage.getItem("Summary")],{ type: "text/html" });
 
         for(var key in localStorage){
-            let ext = key.includes("Summary")? "txt" : "srt"
+            if(key.includes("Summary") || key.includes("Transcript")){
+                let ext = key.includes("Summary")? "txt" : "srt"
 
-            const url = window.URL.createObjectURL(
-                new Blob([window.localStorage.getItem(key)],{ type: "text/html" })
-            );
+                const url = window.URL.createObjectURL(
+                    new Blob([window.localStorage.getItem(key)],{ type: "text/html" })
+                );
 
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute(
-                'download',
-                `${key}.${ext}`,
-            );
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute(
+                    'download',
+                    `${key}.${ext}`,
+                );
 
-            document.body.appendChild(link);
-            link.click();
-            link.parentNode.removeChild(link);
+                document.body.appendChild(link);
+                link.click();
+                link.parentNode.removeChild(link);
+            }
         }
     }
 
