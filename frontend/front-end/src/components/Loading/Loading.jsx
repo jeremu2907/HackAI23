@@ -1,13 +1,10 @@
 import React from 'react'
 import './Loading.css'
 
-function Loading() {
+export default function Loading() {
   return (
-    <div style={{position: "absolute", height: "100%", width: "100%", zIndex: "5",
-                display: "flex", justifyContent:"center", alignItems: "center"}}>
-        <img className="loading" src="./iconLogin.png" alt="loading"></img>
+    <div id="loading" style={{position: "fixed", left: "0px",display: "none", blackgroundColor: "rgba(0,0,0,0.5"}}>
+        <img className="loading" src={require("./iconLogin.png")} alt="loading"></img>
     </div>
   );
 }
-
-export default Loading;

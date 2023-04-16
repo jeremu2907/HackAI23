@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 import Upload from "./components/UploadButton/Upload"
 import PostProcess from './pages/PostProcess';
+import Loading from './components/Loading/Loading'
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
         <Upload/>
       </div> */}
       {/* <PostProcess /> */}
-
+      <Loading/>
       <BrowserRouter>
       <Routes>
         <Route path="/" element={

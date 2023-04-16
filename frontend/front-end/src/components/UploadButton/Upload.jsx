@@ -24,6 +24,8 @@ export default function Upload() {
         if (!selectedFile) return;
         const formData = new FormData();
         formData.append('inputFile', selectedFile);
+        document.getElementById("loading").style.display = "block";
+
         fetch('https://d1b0-47-186-243-93.ngrok-free.app/api/upload', {
             method: 'POST',
             body: formData,
@@ -34,9 +36,11 @@ export default function Upload() {
         .then(response => {
             window.localStorage.setItem("Transcript",response.transcript);
             window.localStorage.setItem("Summary", response.summary);
+            document.getElementById("loading").style.display = "none";
             if(clicked)
                 navigate('/PostProcess')
         })
+
     }, [selectedFile])
 
     return(

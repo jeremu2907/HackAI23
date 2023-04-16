@@ -1,8 +1,6 @@
 .loading{
-    position: absolute;
-    height: 20%;
-    /* width: 50%; */
-    background-repeat: no-repeat;
+    position: relative;
+    height: 5vw;
     animation: loadingScreen 3s ease-in-out infinite;
 }
 
