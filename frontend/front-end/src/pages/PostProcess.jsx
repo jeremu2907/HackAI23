@@ -11,7 +11,8 @@ export default function PostProcess (props) {
         height: "calc(100%)", 
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-evenly"
+        justifyContent: "space-evenly",
+        transition: "height 0.5s"
     }
     const flexCommonStyle = {
         position: "relative",
@@ -26,7 +27,7 @@ export default function PostProcess (props) {
         <div style={{display: "flex", flexDirection:"column", height: "100vh"}}>
             <Translate/>
             <Menu/>
-            <div className='PostApp' style={containerStyle}>
+            <div className='PostApp' id="editor-pane" style={containerStyle}>
                 <div className="mid" id="editor" style={flexCommonStyle}>
                     <TextArea />
                 </div>

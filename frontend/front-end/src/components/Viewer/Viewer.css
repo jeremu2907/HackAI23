@@ -3,7 +3,7 @@
     height: 50px;
     padding: 0px;
     border: 0;
-    border-top: 1px solid var(--accent);
+    /* border-top: 1px solid var(--accent); */
     border-bottom: 1px solid var(--accent);
     /* border-radius: 30px; */
     color: white;
@@ -26,4 +26,13 @@
     backdrop-filter: blur(4px);
     background-color: rgba(70,70,70,0.5);
     color: var(--bad)
+}
+
+#yt-label{
+    border: 0;
+    margin: 0px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Gruppo', cursive;
 }

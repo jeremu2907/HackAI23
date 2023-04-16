@@ -24,15 +24,20 @@ export default function Translate(){
         width: "auto",
         backgroundColor: "white",
         filter: "drop-shadow(5px 15px 15px rgba(20,20,20,0.7))",
-        padding: "20px"
+        padding: "20px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-evenly"
     };
     const scrollBox = {
+        position: "relative",
         display:"flex", 
         flexDirection: "column", 
-        justifyContent: "space-evenly", 
+        justifyContent: "flex-begin", 
         alignItems: "center", 
+        marginBottom: "auto",
         overflowY: "auto",
-        height: "80%"
+        height: "70%"
     }
     const closePanel = () => {
         document.getElementById("translatePanel").style.display = "none";
@@ -49,9 +54,9 @@ export default function Translate(){
     return(
         <div style={overlay} id="translatePanel">
             <div style={translateForm}>
-                <h1 id="x" style={{fontFamily:"'Gruppo', cursive", cursor: "pointer", width: "1ch", padding: "0", margin: "0"}}
-                    onClick={closePanel}>X</h1>
-                <h1 style={{fontFamily:"'Gruppo', cursive"}}>Select Translation Language</h1>
+                <h4 id="x" style={{fontFamily:"'Gruppo', cursive", cursor: "pointer", width: "1ch", padding: "0", margin: "0", position: "relative"}}
+                    onClick={closePanel}>X</h4>
+                <h1 style={{position: "relative",fontFamily:"'Gruppo', cursive", marginBottom: "auto"}}>Select Translation Language</h1>
                 <div style={scrollBox}>
                     {
                         langList.map((e) => 

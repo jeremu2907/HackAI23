@@ -34,7 +34,10 @@ export default function Viewer () {
             loop={true}
             playsinline={true} 
             />
-            <div id="buttonDiv"></div>
+            <div style={{display: "flex", alignItems: "center", justifyContent: "space-around", width: "100%"}}>
+                <h2 id="yt-label">Upload cc to YouTube</h2>
+                <div id="buttonDiv"></div>
+            </div>
             <button id="save" onClick={saveChanges}>Save Recent Changes</button>
             <button id="revert" onClick={discardChanges}>Discard Recent Changes</button>
         </div>

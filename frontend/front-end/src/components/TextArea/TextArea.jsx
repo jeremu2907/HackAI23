@@ -2,8 +2,8 @@ export default function TextArea(){
     const textAreaStyle = {
         position: "relative",
         backgroundColor: "rgba(256,256,256, 1)",
-        height: "calc(90% - 80px)",
-        width: "calc(100%)",
+        height: "calc(95% - 80px)",
+        width: "calc(100% - 40px)",
         border: "0",
         left: "0",
         fontSize: "20px",

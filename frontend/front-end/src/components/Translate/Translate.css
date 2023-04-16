@@ -1,4 +1,5 @@
 .lang-selection{
+    position: relative;
     border-top: 2px solid var(--accent);
     padding: 30px;
     width: 200px;

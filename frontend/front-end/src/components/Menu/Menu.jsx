@@ -24,11 +24,16 @@ export default function Menu(){
         let i = 0;
         if(!menuCollapse){
             document.getElementById("menubtn").innerText="Menu";
+            document.getElementById("menubtn").style.zIndex="10000";
+            setTimeout(() => {
+                document.getElementById("editor-pane").style.position="absolute"
+            },500)
             for(; i<4; i++){
                 document.getElementsByClassName("menuBtn")[i].style.width= "0px";
                 document.getElementsByClassName("menuBtn")[i].style.fontSize= "0px";
             }
         } else {
+            document.getElementById("editor-pane").style.position="relative"
             setTimeout(() => {
                 document.getElementById("menubtn").innerText="Close Menu";
             }, 100);
