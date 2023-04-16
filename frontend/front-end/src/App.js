@@ -1,3 +1,6 @@
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import './App.css';
 import Upload from "./components/UploadButton/Upload"
 import PostProcess from './pages/PostProcess';
@@ -5,14 +8,26 @@ import PostProcess from './pages/PostProcess';
 function App() {
   return (
     <div className="App">
-      <div className="App-header">
+      {/* <div className="App-header">
         <h1>App Name</h1>
         <h2>Something to make the app sound epic</h2>
-        {/* <button id="upload-button" onClick={upload}>Upload file</button> */}
         <Upload/>
-      </div>
+      </div> */}
+      {/* <PostProcess /> */}
 
-      <PostProcess />
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={
+          <div className="App-header">
+            <h1>App Name</h1>
+            <h2>Something to make the app sound epic</h2>
+            <Upload/>
+          </div>
+        }></Route>
+        <Route path="/PostProcess" element={<PostProcess />} />
+      </Routes>
+    </BrowserRouter>
+
     </div>
   );
 }

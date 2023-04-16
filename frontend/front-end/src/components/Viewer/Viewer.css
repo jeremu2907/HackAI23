@@ -1,0 +1,29 @@
+#save, #revert {
+    width: 250px;
+    height: 50px;
+    padding: 0px;
+    border: 0;
+    border-top: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    /* border-radius: 30px; */
+    color: white;
+    font-size: 20px;
+    font-family: 'Red Hat Display', sans-serif;
+    background-color: rgba(0,0,0,0);
+    transition: backdrop-filter 0.3s, background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#save:hover{
+    backdrop-filter: blur(4px);
+    background-color: rgba(70,70,70,0.5);
+    color: var(--good)
+  }
+
+#revert:hover{
+    backdrop-filter: blur(4px);
+    background-color: rgba(70,70,70,0.5);
+    color: var(--bad)
+}
