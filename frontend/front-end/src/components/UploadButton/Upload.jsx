@@ -1,6 +1,7 @@
-import react, {useState, useEffect} from 'react'
-import axios from 'axios';
+import {useState, useEffect} from 'react'
 import './Upload.css'
+
+
 export default function Upload() {
     const [selectedFile, setSelectedFile] = useState(undefined);
 
@@ -18,7 +19,7 @@ export default function Upload() {
         fetch('/api/upload', {
             method: 'POST',
             body: formData,
-        });
+        })
     }, [selectedFile])
 
     return(

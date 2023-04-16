@@ -1,35 +1,36 @@
 import '../App.css'
 import TextArea from '../components/TextArea/TextArea'
+import Menu from '../components/Menu/Menu'
+import Viewer from '../components/Viewer/Viewer'
+
 export default function PostProcess (props) {
     const containerStyle = {
-        position: "absolute", 
+        position: "relative", 
         width: "100%", 
-        height: "100%", 
+        height: "calc(100%)", 
         display: "flex",
-        flexDirection: "row"
+        flexDirection: "row",
+        justifyContent: "space-evenly"
     }
     const flexCommonStyle = {
         position: "relative",
         height: "100%",
         alignContent: "center",
-        justifyContent: "center"
-        // backgroundColor: "red"
-    }
-    const left = {
-        width: "70%",
-        // backgroundColor: "black",
-    }
-    const right = {
-        width: "30%",
-        // backgroundColor: "gray",
+        justifyContent: "center",
+        transition: "width 0.5s",
+        width: "40%",
     }
 
     return(
-        <div className='App' style={containerStyle}>
-            <div className="left" style={{...flexCommonStyle, ...left}}>
-                <TextArea />
-            </div>
-            <div className="right" style={{...flexCommonStyle, ...right}}>
+        <div style={{display: "flex", flexDirection:"column", height: "100vh"}}>
+            <Menu/>
+            <div className='PostApp' style={containerStyle}>
+                <div className="mid" id="editor" style={flexCommonStyle}>
+                    <TextArea />
+                </div>
+                <div className="leftRight" id="viewer" style={flexCommonStyle}>
+                    <Viewer />
+                </div>
             </div>
         </div>
     )

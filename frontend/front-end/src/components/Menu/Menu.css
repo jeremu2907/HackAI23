@@ -1,0 +1,23 @@
+.menuBtn {
+    width: 100%;
+    height: 50px;
+    padding: 0px;
+    border: 0;
+    /* border-top: 1px solid var(--accent); */
+    border-bottom: 1px solid var(--accent);
+    /* border-radius: 30px; */
+    color: white;
+    font-size: 15px;
+    font-family: 'Red Hat Display', sans-serif;
+    background-color: rgba(0,0,0,0);
+    transition: backdrop-filter 0.3s, background-color 0.3s, width 0.5s, font-size 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menuBtn:hover{
+    backdrop-filter: blur(4px);
+    background-color: rgba(70,70,70,0.5);
+    color: var(--accent);
+}
