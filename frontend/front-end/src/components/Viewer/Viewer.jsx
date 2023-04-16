@@ -14,11 +14,14 @@ export default function Viewer () {
 
     const saveChanges = () => {
         let textAreaContent = document.getElementById("textArea").value;
-        window.localStorage.setItem("textAreaContent", textAreaContent);
+        let key = document.getElementById("subject").innerText;
+        console.log(key)
+        window.localStorage.setItem(key, textAreaContent);
     }
 
     const discardChanges = () => {
-        document.getElementById("textArea").value = window.localStorage.getItem("textAreaContent");
+        let key = document.getElementById("subject").innerText;
+        document.getElementById("textArea").value = window.localStorage.getItem(key);
     }
 
     return(
@@ -31,6 +34,7 @@ export default function Viewer () {
             loop={true}
             playsinline={true} 
             />
+            <div id="buttonDiv"></div>
             <button id="save" onClick={saveChanges}>Save Recent Changes</button>
             <button id="revert" onClick={discardChanges}>Discard Recent Changes</button>
         </div>

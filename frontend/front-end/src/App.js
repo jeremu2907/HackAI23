@@ -40,7 +40,7 @@ function App() {
             <h2>Something to make the app sound epic</h2>
             <Upload/>
           </div>
-        }></Route>
+        }/>
         <Route path="/PostProcess" element={<PostProcess />} />
       </Routes>
     </BrowserRouter>

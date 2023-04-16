@@ -1,8 +1,11 @@
 import {useState } from 'react';
+import { Navigate } from "react-router-dom";
+
 import './Menu.css'
 
 export default function Menu(){
     const [menuCollapse, setmenuCollapse] = useState(false);
+
     const btn = {
         height: "50px",
         border: "0",
@@ -37,19 +40,27 @@ export default function Menu(){
         setmenuCollapse(!menuCollapse);
     }
 
-    // const login = () => {
-    //     console.log("hi")
-    // }
+    const handleClick = e => {
+        console.log(e)
+        document.getElementById("subject").innerText = e;
+
+        //Saving and loading from localstorage
+        document.getElementById("textArea").value = window.localStorage.getItem(e);
+    }
+
+    const translate = () => {
+        console.log('HSUID')
+        document.getElementById("translatePanel").style.display = "block";
+    }
 
     return(
         <div style={{position: "relative",textAlign: "start", display: "flex", flexDirection: "row", height: "50px"}}>
             <button id="menubtn" style={btn} onClick={menuClick}>Close Menu</button>
-            <Item text="Transcript" />
-            <Item text="Summary" />
-            <Item text="Translate to Another Language"/>
-            <Item text="Download" />
+            <Item text="Transcript" callBack={()=>handleClick("Transcript")}/>
+            <Item text="Summary" callBack={()=>{handleClick("Summary")}}/>
+            <Item text="Translate to Another Language" callBack={translate}/>
+            <Item text="Download"/>
             {/* <Item id="buttonDiv" text="Connect to YouTube"/> */}
-            <div id="buttonDiv" style={{alignSelf: "flex-end", justifySelf: "end", marginLeft: "auto"}}></div>
         </div>
     )
 }
