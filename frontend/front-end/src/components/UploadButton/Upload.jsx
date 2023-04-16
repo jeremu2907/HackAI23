@@ -12,7 +12,7 @@ export default function Upload() {
     })
 
     useEffect(() => {
-        console.log(selectedFile);
+        if (!selectedFile) return;
         const formData = new FormData();
         formData.append('inputFile', selectedFile);
         fetch('/api/upload', {
