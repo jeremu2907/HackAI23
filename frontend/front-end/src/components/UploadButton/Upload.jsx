@@ -24,20 +24,21 @@ export default function Upload() {
         if (!selectedFile) return;
         const formData = new FormData();
         formData.append('inputFile', selectedFile);
-        document.getElementById("loading").style.display = "block";
+        document.getElementById("loading").style.visibility = "visible";
 
         fetch('https://d1b0-47-186-243-93.ngrok-free.app/api/upload', {
             method: 'POST',
             body: formData,
         })
         .then((res) => {
+            document.getElementById("loading").style.visibility = "hidden";
             return res.json()
         })
         .then(response => {
             window.localStorage.clear();
             window.localStorage.setItem("Transcript",response.transcript);
             window.localStorage.setItem("Summary", response.summary);
-            document.getElementById("loading").style.display = "none";
+            document.getElementById("loading").style.visibility = "hidden";
             if(clicked){
                 navigate('/PostProcess')
                 setclicked(!clicked)

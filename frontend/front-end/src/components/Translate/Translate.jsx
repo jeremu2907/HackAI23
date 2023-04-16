@@ -56,20 +56,21 @@ export default function Translate(){
 
     useEffect(() => {
         console.log(lang)
-        document.getElementById("loading").style.display = "block";
         if(send)
+            document.getElementById("loading").style.visibility = "visible";
             fetch(`https://d1b0-47-186-243-93.ngrok-free.app/api/translate?summary=${window.localStorage.getItem('Summary')}&transcript=${encodeURI(window.localStorage.getItem('Transcript'))}&tolang=${lang}`, {
                 method: 'GET',
             })
             .then((res) => {
+                document.getElementById("loading").style.visibility = "hidden";
                 return res.json()
             })
             .then(response => {
                 console.log(response)
+                document.getElementById("loading").style.visibility = "hidden";
                 window.localStorage.setItem(`Transcript_${lang}`,response.transcript);
                 window.localStorage.setItem(`Summary_${lang}`, response.summary);
                 setsend(false);
-                document.getElementById("loading").style.display = "none";
             })
     },[lang,send])
     
