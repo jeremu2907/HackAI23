@@ -30,8 +30,9 @@ const translateAndDownload = async (SRT_input, languageOption) => {
     const plaimText = await response.text();
     const jsonResponse = JSON.parse(plaimText).outputs.srt_output
     console.log(jsonResponse);
+    var str_filename = languageOption + '.srt'
 
-    fs.writeFileSync('test.srt', jsonResponse)
+    fs.writeFileSync(str_filename, jsonResponse)
 };
 
 /* console.log(translateAndDownload(`    1
