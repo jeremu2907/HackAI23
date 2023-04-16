@@ -1,0 +1,19 @@
+.lang-selection{
+    position: relative;
+    border-top: 2px solid var(--accent);
+    padding: 30px;
+    width: 200px;
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.lang-selection:hover{
+    background-color: var(--accent);
+    color: white;
+}
+
+#x:hover{
+    color: var(--bad)
+}

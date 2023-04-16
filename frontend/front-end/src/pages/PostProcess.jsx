@@ -2,6 +2,7 @@ import '../App.css'
 import TextArea from '../components/TextArea/TextArea'
 import Menu from '../components/Menu/Menu'
 import Viewer from '../components/Viewer/Viewer'
+import Translate from '../components/Translate/Translate'
 
 export default function PostProcess (props) {
     const containerStyle = {
@@ -10,7 +11,8 @@ export default function PostProcess (props) {
         height: "calc(100%)", 
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-evenly"
+        justifyContent: "space-evenly",
+        transition: "height 0.5s"
     }
     const flexCommonStyle = {
         position: "relative",
@@ -18,13 +20,14 @@ export default function PostProcess (props) {
         alignContent: "center",
         justifyContent: "center",
         transition: "width 0.5s",
-        width: "40%",
+        width: "45%",
     }
 
     return(
         <div style={{display: "flex", flexDirection:"column", height: "100vh"}}>
+            <Translate/>
             <Menu/>
-            <div className='PostApp' style={containerStyle}>
+            <div className='PostApp' id="editor-pane" style={containerStyle}>
                 <div className="mid" id="editor" style={flexCommonStyle}>
                     <TextArea />
                 </div>
