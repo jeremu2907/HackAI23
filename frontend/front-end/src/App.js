@@ -21,8 +21,8 @@ function App() {
         <Route path="/" element={
           <div className="App-header">
             {/* <div id="buttonDiv"></div> */}
-            <h1>App Name</h1>
-            <h2>Something to make the app sound epic</h2>
+            <h1>Oh - Cap</h1>
+            <h2>Better video translation, powered by Deep Learning and Cloud Technologies</h2>
             <Upload/>
           </div>
         }/>

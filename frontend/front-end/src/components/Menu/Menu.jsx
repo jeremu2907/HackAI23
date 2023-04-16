@@ -66,39 +66,25 @@ export default function Menu(){
     const download = () => {
         // let blobTranscript = new Blob([window.localStorage.getItem("Transcript")],{ type: "text/html" });
         // let blobSummary = new Blob([window.localStorage.getItem("Summary")],{ type: "text/html" });
-        const url1 = window.URL.createObjectURL(
-            new Blob([window.localStorage.getItem("Transcript")],{ type: "text/html" })
-        );
 
-        const url2 = window.URL.createObjectURL(
-            new Blob([window.localStorage.getItem("Summary")],{ type: "text/html" })
-        );
+        for(var key in localStorage){
+            let ext = key.includes("Summary")? "txt" : "srt"
 
-        const link1 = document.createElement('a');
-        link1.href = url1;
-        link1.setAttribute(
-            'download',
-            `transcript.srt`,
-        );
+            const url = window.URL.createObjectURL(
+                new Blob([window.localStorage.getItem(key)],{ type: "text/html" })
+            );
 
-        const link2 = document.createElement('a');
-        link2.href = url2;
-        link2.setAttribute(
-            'download',
-            `summary.txt`,
-        );
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute(
+                'download',
+                `${key}.${ext}`,
+            );
 
-        // Append to html link element page
-        document.body.appendChild(link1);
-        document.body.appendChild(link2);
-
-        // Start download
-        link1.click();
-        link2.click();
-
-        // Clean up and remove the link
-        link1.parentNode.removeChild(link1);
-        link2.parentNode.removeChild(link2);
+            document.body.appendChild(link);
+            link.click();
+            link.parentNode.removeChild(link);
+        }
     }
 
     useEffect(() => {

@@ -34,11 +34,14 @@ export default function Upload() {
             return res.json()
         })
         .then(response => {
+            window.localStorage.clear();
             window.localStorage.setItem("Transcript",response.transcript);
             window.localStorage.setItem("Summary", response.summary);
             document.getElementById("loading").style.display = "none";
-            if(clicked)
+            if(clicked){
                 navigate('/PostProcess')
+                setclicked(!clicked)
+            }
         })
 
     }, [selectedFile])

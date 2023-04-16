@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react"
 import './Translate.css'
 
-export default function Translate(){
-    const [lang, setlang] = useState("Japanese");
+const langDict = {
+    "English":"en","Arabic":"ar","Chinese":"zh","French":"fr","German":"de","Hindi":"hi","Indonesian":"id","Irish":"ga","Italian":"it","Japanese":"ja","Korean":"ko","Polish":"pl","Portuguese":"pt","Russian":"ru","Spanish":"es","Turkish":"tr","Vietnamese":"vi"
+}
 
-    const langList = ["Spanish", "German", "French", "Japanese", "Chinese", "Russian", "Korean", "Portugese"];
+export default function Translate(){
+    const [lang, setlang] = useState("en");
+    const [send, setsend] = useState(false);
+    const langList = Object.keys(langDict);
 
     const overlay = {
         position: "absolute",
@@ -43,13 +47,31 @@ export default function Translate(){
         document.getElementById("translatePanel").style.display = "none";
     }
 
+    const translateReq = (e) => {
+        closePanel();
+        setlang(langDict[e]);
+        console.log(lang)
+        setsend(true);
+    }
+
     useEffect(() => {
-        let formData = new FormData();
-        fetch('/api/upload', {
-            method: 'POST',
-            body: formData,
-        }). then (closePanel)
-    },[lang])
+        console.log(lang)
+        document.getElementById("loading").style.display = "block";
+        if(send)
+            fetch(`https://d1b0-47-186-243-93.ngrok-free.app/api/translate?summary=${window.localStorage.getItem('Summary')}&transcript=${encodeURI(window.localStorage.getItem('Transcript'))}&tolang=${lang}`, {
+                method: 'GET',
+            })
+            .then((res) => {
+                return res.json()
+            })
+            .then(response => {
+                console.log(response)
+                window.localStorage.setItem(`Transcript_${lang}`,response.transcript);
+                window.localStorage.setItem(`Summary_${lang}`, response.summary);
+                setsend(false);
+                document.getElementById("loading").style.display = "none";
+            })
+    },[lang,send])
     
     return(
         <div style={overlay} id="translatePanel">
@@ -60,7 +82,7 @@ export default function Translate(){
                 <div style={scrollBox}>
                     {
                         langList.map((e) => 
-                        <div key={e} className="lang-selection" onClick={() => {setlang(e)}}>{e}</div>)
+                        <div key={e} className="lang-selection" onClick={() => {translateReq(e)}}>{e}</div>)
                     }
                 </div>
             </div>
