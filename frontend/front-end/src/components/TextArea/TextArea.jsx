@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 export default function TextArea(){
     const textAreaStyle = {
         position: "relative",
@@ -15,6 +17,7 @@ export default function TextArea(){
         margin: "0px",
         padding: "2px"
     }
+
     return(
         <div style={{height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center"}}>
             <h1 style={headingStyle} id="subject">Transcript</h1>

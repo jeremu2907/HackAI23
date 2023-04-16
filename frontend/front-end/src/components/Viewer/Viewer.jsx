@@ -27,6 +27,7 @@ export default function Viewer () {
 
     function handleCallbackResponse(response){
         console.log("JWD Token" + response.credential)
+        
     }
 
     useEffect(() => {

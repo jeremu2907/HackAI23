@@ -1,4 +1,4 @@
-import {useState } from 'react';
+import {useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './Menu.css'
@@ -63,6 +63,48 @@ export default function Menu(){
         navigate("/")
     }
 
+    const download = () => {
+        // let blobTranscript = new Blob([window.localStorage.getItem("Transcript")],{ type: "text/html" });
+        // let blobSummary = new Blob([window.localStorage.getItem("Summary")],{ type: "text/html" });
+        const url1 = window.URL.createObjectURL(
+            new Blob([window.localStorage.getItem("Transcript")],{ type: "text/html" })
+        );
+
+        const url2 = window.URL.createObjectURL(
+            new Blob([window.localStorage.getItem("Summary")],{ type: "text/html" })
+        );
+
+        const link1 = document.createElement('a');
+        link1.href = url1;
+        link1.setAttribute(
+            'download',
+            `transcript.srt`,
+        );
+
+        const link2 = document.createElement('a');
+        link2.href = url2;
+        link2.setAttribute(
+            'download',
+            `summary.txt`,
+        );
+
+        // Append to html link element page
+        document.body.appendChild(link1);
+        document.body.appendChild(link2);
+
+        // Start download
+        link1.click();
+        link2.click();
+
+        // Clean up and remove the link
+        link1.parentNode.removeChild(link1);
+        link2.parentNode.removeChild(link2);
+    }
+
+    useEffect(() => {
+        document.getElementById("textArea").value = window.localStorage.getItem("Transcript");
+    },[]);
+
     return(
         <div style={{position: "relative",textAlign: "start", display: "flex", flexDirection: "row", height: "50px"}}>
             <button id="menubtn" style={btn} onClick={menuClick}>Close Menu</button>
@@ -70,7 +112,7 @@ export default function Menu(){
             <Item text="Transcript" callBack={()=>handleClick("Transcript")}/>
             <Item text="Summary" callBack={()=>{handleClick("Summary")}}/>
             <Item text="Translate to Another Language" callBack={translate}/>
-            <Item text="Download"/>
+            <Item text="Download" callBack={download}/>
             {/* <Item id="buttonDiv" text="Connect to YouTube"/> */}
         </div>
     )
