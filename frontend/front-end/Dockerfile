@@ -11,7 +11,7 @@ WORKDIR /home/container
 
 COPY --from=ts-compiler /home/container/package.json ./
 COPY --from=ts-compiler /home/container/yarn.lock ./
-COPY --from=ts-compiler /home/container/dist ./
+COPY --from=ts-compiler /home/container/build ./
 RUN yarn install --production
 
 FROM node:alpine
