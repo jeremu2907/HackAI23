@@ -1,7 +1,7 @@
 FROM node:alpine as ts-compiler
 WORKDIR /home/container
 
-COPY . .
+COPY ./backend .
 
 RUN yarn install
 RUN yarn run build
@@ -9,9 +9,9 @@ RUN yarn run build
 FROM node:alpine as ts-remover
 WORKDIR /home/container
 
-COPY --from=ts-compiler /home/container/backend/package.json ./
-COPY --from=ts-compiler /home/container/backend/yarn.lock ./
-COPY --from=ts-compiler /home/container/backend/dist ./
+COPY --from=ts-compiler /home/container/package.json ./
+COPY --from=ts-compiler /home/container/yarn.lock ./
+COPY --from=ts-compiler /home/container/dist ./
 RUN yarn install --production
 
 FROM gcr.io/distroless/nodejs:16
