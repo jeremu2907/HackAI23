@@ -61,7 +61,7 @@ export default function Translate(){
         if(send && lang && lang !== 'en'){
             console.log('sending requests');
             document.getElementById("loading").style.visibility = "visible";
-            fetch(`${process.env.BACKEND_API}/api/translate?summary=${window.localStorage.getItem('Summary')}&transcript=${encodeURI(window.localStorage.getItem('Transcript'))}&tolang=${lang}`, {
+            fetch(`http://backend:3002/api/translate?summary=${window.localStorage.getItem('Summary')}&transcript=${encodeURI(window.localStorage.getItem('Transcript'))}&tolang=${lang}`, {
                 method: 'GET',
             })
             .then((res) => {

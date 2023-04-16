@@ -20,7 +20,7 @@ export default function Upload() {
         formData.append('inputFile', selectedFile);
         document.getElementById("loading").style.visibility = "visible";
 
-        fetch(`${process.env.BACKEND_API}/api/upload`, {
+        fetch(`http://backend:3002/api/upload`, {
             method: 'POST',
             body: formData,
         })
