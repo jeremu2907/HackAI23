@@ -3,10 +3,10 @@ WORKDIR /home/container
 
 ENV PATH /home/container/node_modules/.bin:$PATH
 
-COPY package.json ./
+COPY frontend/front-end/package.json ./
 
 RUN npm i
 RUN npm i -g react-scripts
-COPY . ./
+COPY frontend/front-end. ./
 
 CMD ["PORT=3003", "react-scripts", "start"]
