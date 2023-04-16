@@ -28,4 +28,4 @@ jobs:
         with:
           push: true
           file: backend/Dockerfile
-          tags: ghcr.io/${{ github.repository }}:backend
+          tags: ghcr.io/jeremu2907/hackai23:backend
