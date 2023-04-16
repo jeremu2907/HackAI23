@@ -11,7 +11,7 @@ export default function TextArea(props){
     }
     return(
         <div style={{height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-around", alignItems: "center"}}>
-            <textarea style={textAreaStyle}/>
+            <textarea id="textArea" style={textAreaStyle}/>
         </div>
     )
 }

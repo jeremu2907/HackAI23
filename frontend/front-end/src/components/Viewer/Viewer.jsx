@@ -12,6 +12,15 @@ export default function Viewer () {
         width: "100%"
     }
 
+    const saveChanges = () => {
+        let textAreaContent = document.getElementById("textArea").value;
+        window.localStorage.setItem("textAreaContent", textAreaContent);
+    }
+
+    const discardChanges = () => {
+        document.getElementById("textArea").value = window.localStorage.getItem("textAreaContent");
+    }
+
     return(
         <div style={container}>
             <ReactPlayer 
@@ -22,8 +31,8 @@ export default function Viewer () {
             loop={true}
             playsinline={true} 
             />
-            <button id="save">Save Recent Changes</button>
-            <button id="revert">Discard Recent Changes</button>
+            <button id="save" onClick={saveChanges}>Save Recent Changes</button>
+            <button id="revert" onClick={discardChanges}>Discard Recent Changes</button>
         </div>
     )
 }
