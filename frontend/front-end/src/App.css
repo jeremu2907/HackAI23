@@ -1,32 +1,28 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300&family=Tajawal:wght@300&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Red+Hat+Display:wght@300&family=Tajawal:wght@300&display=swap');
 
 :root {
   --main-theme: #aaaaaa;
-  --accent: rgb(58, 216, 255);
+  --accent: #3ad8ff;
+  --good: rgb(33, 255, 89);
+  --bad: rgb(255, 56, 56);
 }
 
 body {
   margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: url("./mainbg.png");
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
 }
 
-.App {
+.App{
   background-color: rgba(0,0,0,0.85);
   padding: 0;
   text-align: center;
 }
 
 .App-header {
-  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -37,7 +33,6 @@ body {
 }
 
 .App-header h1 {
-  /* font-family: 'Tajawal', sans-serif; */
   font-family: 'Gruppo', cursive;
   color: var(--accent);
   font-size: 150px;
@@ -50,10 +45,10 @@ body {
 
 textarea { 
   font-family: 'Montserrat', sans-serif;
-  font-size: 15px;
+  /* font-size: 15px; */
   
   resize: none; 
-  /* border: none; */
+  border: none;
   overflow: auto;
   outline: none;
 
@@ -61,3 +56,15 @@ textarea {
   -moz-box-shadow: none;
   box-shadow: none;
 }
+
+.selection {
+  cursor: pointer;
+  border-bottom: 2px solid rgba(0,0,0,0);
+  transition: color 0.3s, border-top 0.3s, border-bottom 0.3s
+}
+
+.selection:hover {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
