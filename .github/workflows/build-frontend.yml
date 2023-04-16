@@ -27,5 +27,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          file: backend/Dockerfile
+          file: frontend/front-end/Dockerfile
           tags: ghcr.io/jeremu2907/hackai23:frontend
