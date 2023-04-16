@@ -20,7 +20,7 @@ export default function Upload() {
         formData.append('inputFile', selectedFile);
         document.getElementById("loading").style.visibility = "visible";
 
-        fetch('https://d1b0-47-186-243-93.ngrok-free.app/api/upload', {
+        fetch(`${process.env.BACKEND_API}/api/upload`, {
             method: 'POST',
             body: formData,
         })

@@ -17,4 +17,3 @@ RUN yarn install --production
 FROM node:alpine
 WORKDIR /home/container
 COPY --from=ts-remover /home/container/ ./
-CMD [ "npx", "serve", "." ]

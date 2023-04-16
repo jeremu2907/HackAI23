@@ -33,5 +33,24 @@ services:
     depends_on:
       - 'postgres'
 
+  backend:
+    image: ghcr.io/jeremu2907/hackai23:backend
+    container_name: hackai23-backend
+    environment:
+      - PORT=3002
+    env_file:
+      - .env
+    restart: unless-stopped
+  front-end:
+    image: ghcr.io/jeremu2907/hackai23:frontend
+    container_name: hackai23-frontend
+    ports:
+      - '3001:3001'
+    command: "npx serve ."
+    environment:
+      - PORT=3001
+      - BACKEND_API=http://backend:3002
+    restart: unless-stopped
+
 volumes:
   pg_data:
