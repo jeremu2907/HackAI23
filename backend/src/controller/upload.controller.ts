@@ -44,6 +44,7 @@ export class UploadController {
         const response1 = await instance.post('/', {
             spellId: '0Y49H3JDA4Q7V9m81nzp5',
             // Fill in a dynamic value for your input block
+            spellVersionId: 'ppBd3EHq-oxz_prB8FXY0',
             inputs: {
                 audio_input: videoURL,
             },
@@ -55,6 +56,7 @@ export class UploadController {
         console.time('english-to-summary');
         const response2 = await instance.post('/', {
             spellId: 'OvY9iy-EKvD-SpxUEA47S',
+            spellVersionId: 'hcgef7igUlhNCpxhcbYI6',
             // Fill in dynamic values for each of your 2 input blocks
             inputs: {
                 text_input_3: 'Make a summary from the script',
