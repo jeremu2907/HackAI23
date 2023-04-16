@@ -1,19 +1,12 @@
 FROM node:alpine as ts-compiler
 WORKDIR /home/container
 
-COPY ./frontend/front-end .
+ENV PATH /home/container/node_modules/.bin:$PATH
 
-RUN yarn install
-RUN yarn run build
+COPY package.json ./
 
-FROM node:alpine as ts-remover
-WORKDIR /home/container
+RUN npm i
+RUN npm i -g react-scripts
+COPY . ./
 
-COPY --from=ts-compiler /home/container/package.json ./
-COPY --from=ts-compiler /home/container/yarn.lock ./
-COPY --from=ts-compiler /home/container/build ./
-RUN yarn install --production
-
-FROM node:alpine
-WORKDIR /home/container
-COPY --from=ts-remover /home/container/ ./
+CMD ["PORT=3003", "react-scripts", "start"]

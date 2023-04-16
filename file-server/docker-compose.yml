@@ -45,10 +45,8 @@ services:
     image: ghcr.io/jeremu2907/hackai23:frontend
     container_name: hackai23-frontend
     ports:
-      - '3001:3001'
-    command: "npx serve ."
+      - '3003:3003'
     environment:
-      - PORT=3001
       - BACKEND_API=http://backend:3002
     restart: unless-stopped
 
