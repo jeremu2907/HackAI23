@@ -116,7 +116,8 @@ async function translate(text: string, options: { to: string }): Promise<string>
     };
 
     console.log(body);
-    const result = await axios.post('https://translate.terraprint.co/translate', body, {
+    // https://translate.terraprint.co/translate
+    const result = await axios.post('https://b44c-20-125-96-44.ngrok-free.app/translate', body, {
         headers: { 'content-type': 'application/x-www-form-urlencoded', accept: 'application/json' },
     });
     return result.data.translatedText;
